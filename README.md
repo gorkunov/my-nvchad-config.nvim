@@ -2,6 +2,7 @@
 
 This is my local configuration for nvim and neovide based on [NvChad v2.0](https://nvchad.com).
 
+
 Plugins that I'm using:
 
 * All plugins from NvChad.
@@ -13,6 +14,11 @@ Plugins that I'm using:
 * [copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Copilot integration with Cmp.
 * [mini.align](https://github.com/echasnovski/mini.align) - align strings with shortcuts.
 * [mini.move](https://github.com/echasnovski/mini.move) - move seleted text up/down/left/right.
+
+### Requirements
+
+* JetBrainsMono + Nerd Fonts must be installed [link to fonts](https://www.nerdfonts.com/font-downloads).
+
 
 ### How to install
 
