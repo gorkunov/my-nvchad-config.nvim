@@ -14,6 +14,7 @@ Plugins that I'm using:
 * [copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Copilot integration with Cmp.
 * [mini.align](https://github.com/echasnovski/mini.align) - align strings with shortcuts.
 * [mini.move](https://github.com/echasnovski/mini.move) - move seleted text up/down/left/right.
+* [trouble.nvim](https://github.com/folke/trouble.nvim) - popup with errors or results from telescope.
 
 ### Requirements
 
