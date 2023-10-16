@@ -61,6 +61,9 @@ M.general = {
     ["<D-s>"] = { "<ESC>:w <CR>", "save file" },
     ["<D-v>"] = { "<C-r>*", "paste" },
   },
+  c = {
+    ["<D-v>"] = { "<C-r>*", "paste" },
+  },
 }
 
 M.tabufline = {
