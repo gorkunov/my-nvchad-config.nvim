@@ -15,6 +15,7 @@ Plugins that I'm using:
 * [mini.align](https://github.com/echasnovski/mini.align) - align strings with shortcuts.
 * [mini.move](https://github.com/echasnovski/mini.move) - move seleted text up/down/left/right.
 * [trouble.nvim](https://github.com/folke/trouble.nvim) - popup with errors or results from telescope.
+* [hop.nvim](https://github.com/smoka7/hop.nvim) - easy-motion replacement for nvim.
 
 ### Requirements
 

@@ -11,12 +11,6 @@ M.general = {
     ["<D-v>"] = { "i<c-r>*", "paste" },
     ["\\p"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["<S-h>"] = {
-      function()
-        require("treesj").toggle()
-      end,
-      "split-join node",
-    },
     ["<D-t>"] = {
       function()
         require("trouble").toggle()
@@ -27,9 +21,30 @@ M.general = {
         require("trouble").refresh()
       end,
     },
+    ["<leader>w"] = {
+      function()
+        require("hop").hint_words {
+          direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+        }
+      end,
+    },
+    ["f"] = {
+      function()
+        require("hop").hint_words {
+          direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+        }
+      end,
+    },
+    ["F"] = {
+      function()
+        require("hop").hint_words {
+          direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
+        }
+      end,
+    },
   },
   v = {
-    ["<D-v>"] = { "p", "paste" },
+    ["<D-v>"] = { "P", "paste" },
     ["<D-c>"] = { "y", "copy" },
     [">"] = { ">gv", "indent" },
     ["<S-Up>"] = {

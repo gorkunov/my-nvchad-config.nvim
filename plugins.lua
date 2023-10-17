@@ -8,9 +8,9 @@ local plugins = {
   },
 
   {
-    "Wansmer/treesj",
+    "smoka7/hop.nvim",
     event = "BufEnter",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {},
   },
 
   {
