@@ -18,6 +18,11 @@ local sources = {
 
   -- elixir
   b.formatting.mix,
+  -- sql
+  b.formatting.pg_format,
+
+  -- php
+  b.formatting.phpcsfixer,
 }
 
 local async_formatting = function(bufnr)

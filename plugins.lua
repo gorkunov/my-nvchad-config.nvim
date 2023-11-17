@@ -8,6 +8,17 @@ local plugins = {
   },
 
   {
+    dir = "~/Projects/nvim-treesitter-expand-region",
+    event = "BufEnter",
+  },
+
+  {
+    "kylechui/nvim-surround",
+    event = "BufEnter",
+    opts = {},
+  },
+
+  {
     "smoka7/hop.nvim",
     event = "BufEnter",
     opts = {},

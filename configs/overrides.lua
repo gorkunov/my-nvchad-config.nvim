@@ -16,9 +16,13 @@ M.treesitter = {
   },
   indent = {
     enable = true,
-    -- disable = {
-    --   "python"
-    -- },
+  },
+  expand_region = {
+    enable = true,
+    keymaps = {
+      expand_region = "z",
+      collapse_region = "Z",
+    },
   },
 }
 

@@ -1,6 +1,18 @@
 ---@type MappingsTable
 local M = {}
 
+local H = {}
+
+H.select_buf = function(idx)
+  local bufs = require("nvchad.tabufline").bufilter() or {}
+
+  if idx > #bufs then
+    H.select_buf(idx - 1)
+    return
+  end
+  vim.cmd("b" .. bufs[idx])
+end
+
 M.general = {
   n = {
     ["<ScrollWheelLeft>"] = { "<nop>", "disable scroll left" },
@@ -42,8 +54,26 @@ M.general = {
         }
       end,
     },
+    ["-"] = {
+      function()
+        local r, c = unpack(vim.api.nvim_win_get_cursor(0))
+        local r1, c1 = unpack(vim.fn.searchpos("'", "bn"))
+        local r2, c2 = unpack(vim.fn.searchpos('"', "bn"))
+
+        if r == r1 and (r ~= r2 or c1 > c2) then
+          vim.cmd 'normal macsq"'
+        elseif r == r2 and (r ~= r1 or c2 > c1) then
+          vim.cmd "normal csq'"
+        else
+          print "No matching quotes"
+        end
+        vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { r, c })
+      end,
+    },
   },
   v = {
+    ["<ScrollWheelLeft>"] = { "<nop>", "disable scroll left" },
+    ["<ScrollWheelRight>"] = { "<nop>", "disable scroll right" },
     ["<D-v>"] = { "P", "paste" },
     ["<D-c>"] = { "y", "copy" },
     [">"] = { ">gv", "indent" },
@@ -85,7 +115,6 @@ M.tabufline = {
   plugin = true,
 
   n = {
-
     -- close buffer + hide terminal buffer
     ["<D-w>"] = {
       function()
@@ -96,6 +125,15 @@ M.tabufline = {
     },
   },
 }
+
+for i = 1, 9 do
+  M.tabufline.n["<D-" .. i .. ">"] = {
+    function()
+      H.select_buf(i)
+    end,
+    "select buf " .. i,
+  }
+end
 
 M.telescope = {
   plugin = true,
