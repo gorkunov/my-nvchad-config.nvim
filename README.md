@@ -24,7 +24,5 @@ Plugins that I'm using:
 
 ### How to install
 
-1. Install NvChad ([instructions](https://nvchad.com/docs/quickstart/install)).
-2. Go to custom folder in nvchad configuration (lua/custom).
-3. Remove everything from folder.
-4. Clone this repo to custom folder.
+1. Clone this repo to custom folder to `.config/nvim`
+2. Run `nvim`
