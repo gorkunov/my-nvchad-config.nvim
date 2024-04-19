@@ -20,11 +20,15 @@ map("v", "<ScrollWheelRight>", "<nop>")
 
 -- normal
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("n", "qq", ":$a,<ESC>", { desc = "Add comma end of line" })
+map("n", "qq", "$a,<ESC>", { desc = "Add comma end of line" })
 map("n", "<D-s>", ":w <CR>", { desc = "Save file" })
 map("n", "<D-a>", "ggVG", { desc = "Select all" })
 map("n", "<D-v>", "i<c-r>*", { desc = "Paste" })
 map("n", "\\p", ":NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
+
+map("n", "<leader>v", function()
+  require("conform").format { async = true, lsp_fallback = true }
+end, { desc = "Format file" })
 
 map("n", "<D-w>", function()
   vim.api.nvim_command "write"
@@ -32,11 +36,9 @@ map("n", "<D-w>", function()
 end, { desc = "Close buffer" })
 
 for i = 1, 9 do
-  map("n", "<D-" .. i .. ">",
-    function()
-      H.select_buf(i)
-    end, 
-    { desc = "Select buf " .. i })
+  map("n", "<D-" .. i .. ">", function()
+    H.select_buf(i)
+  end, { desc = "Select buf " .. i })
 end
 
 map("n", "<D-t>", function()
@@ -50,7 +52,7 @@ end)
 map("n", "<leader>w", function()
   require("hop").hint_words {
     direction = require("hop.hint").HintDirection.AFTER_CURSOR,
- }
+  }
 end)
 
 map("n", "f", function()

@@ -8,10 +8,10 @@ M.ui = {
   hl_override = {
     Comment = { italic = true },
   },
+
   statusline = {
     theme = "vscode_colored",
   },
 }
-
 
 return M

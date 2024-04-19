@@ -55,6 +55,7 @@ return {
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
+    cmd = { "ConformInfo" },
     config = function()
       require "configs.conform"
     end,
@@ -63,7 +64,10 @@ return {
   -- Override plugin definition options
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "folke/trouble.nvim" },
+    dependencies = {
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope-fzy-native.nvim",
+    },
     opts = function()
       local config = require "nvchad.configs.telescope"
       local custom = require "configs.telescope"
@@ -123,10 +127,6 @@ return {
         "typescript-language-server",
         "deno",
         "prettier",
-
-        -- c/cpp stuff
-        "clangd",
-        "clang-format",
       },
     },
   },
@@ -182,6 +182,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
       indent = { char = "┆" },
+      scope = { show_start = false, show_end = false },
     },
   },
 }
