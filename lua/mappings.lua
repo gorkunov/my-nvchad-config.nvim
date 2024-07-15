@@ -26,10 +26,6 @@ map("n", "<D-a>", "ggVG", { desc = "Select all" })
 map("n", "<D-v>", "i<c-r>*", { desc = "Paste" })
 map("n", "\\p", ":NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
 
-map("n", "<leader>v", function()
-  require("conform").format { async = true, lsp_fallback = true }
-end, { desc = "Format file" })
-
 map("n", "<D-w>", function()
   vim.api.nvim_command "write"
   require("nvchad.tabufline").close_buffer()
@@ -42,7 +38,7 @@ for i = 1, 9 do
 end
 
 map("n", "<D-t>", function()
-  require("trouble").toggle()
+  require("trouble").toggle { mode = "diagnostics" }
 end)
 
 map("n", "<D-r>", function()
@@ -89,31 +85,47 @@ map("n", "<D-§>", "<cmd>Telescope oldfiles<CR>", { desc = "Find in recent files
 map("n", "<D-/>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Find in current buffer" })
 map("n", "gf", "<cmd>Telescope grep_string<CR>", { desc = "Find cword" })
 
+-- supermaven
+map("n", "<CR>", function()
+  local suggestion = require "supermaven-nvim.completion_preview"
+  if suggestion.has_suggestion() then
+    suggestion.on_accept_suggestion()
+  end
+end, { desc = "Supermaven" })
+
 -- visual
 map("v", "<D-s>", "<ESC>:w <CR>", { desc = "Save file" })
-map("v", "<D-v>", "P", { desc = "Paste" })
-map("v", "<D-c>", "y", { desc = "Copy" })
-map("v", ">", ">gv", { desc = "Indent" })
+map("v", "<d-v>", "p", { desc = "paste" })
+map("v", "<d-c>", "y", { desc = "copy" })
+map("v", ">", ">gv", { desc = "indent" })
 
-map("v", "<S-Up>", function()
+map("v", "<s-up>", function()
   require("mini.move").move_selection "up"
-end, { desc = "Move selection up" })
+end, { desc = "move selection up" })
 
-map("v", "<S-Down>", function()
+map("v", "<s-down>", function()
   require("mini.move").move_selection "down"
-end, { desc = "Move selection down" })
+end, { desc = "move selection down" })
 
-map("v", "<S-Left>", function()
+map("v", "<s-left>", function()
   require("mini.move").move_selection "left"
-end, { desc = "Move selection left" })
+end, { desc = "move selection left" })
 
-map("v", "<S-Right>", function()
+map("v", "<s-right>", function()
   require("mini.move").move_selection "right"
 end, { desc = "Move selection right" })
+
+map("v", "y", "mzy`z", { desc = "Copy without moving cursor", noremap = true })
 
 -- insert
 map("i", "<D-s>", "<ESC>:w <CR>", { desc = "Save file" })
 map("i", "<D-v>", "<C-r>*", { desc = "Paste" })
+map("i", "<Tab>", function()
+  local suggestion = require "supermaven-nvim.completion_preview"
+  if suggestion.has_suggestion() then
+    suggestion.on_accept_suggestion()
+  end
+end, { desc = "Supermaven", noremap = true })
 
 -- command
 map("c", "<D-v>", "<C-r>*", { desc = "Paste" })

@@ -34,10 +34,11 @@ return {
   },
 
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    opts = {},
+    "supermaven-inc/supermaven-nvim",
+    event = "BufEnter",
+    opts = {
+      ignore_filetypes = { gitcommit = true, gitrebase = true, gitstatus = true },
+    },
   },
 
   {
@@ -59,6 +60,12 @@ return {
     config = function()
       require "configs.conform"
     end,
+  },
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has "nvim-0.10.0" == 1,
   },
 
   -- Override plugin definition options
@@ -87,30 +94,15 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- cmp sources plugins
-      {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-          require("copilot_cmp").setup()
-        end,
-      },
-      {
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-      },
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
     },
-    opts = {
-      sources = {
-        { name = "copilot" },
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "nvim_lua" },
-        { name = "path" },
-      },
-    },
+    opts = function()
+      return require "configs.cmp"
+    end,
   },
 
   {
