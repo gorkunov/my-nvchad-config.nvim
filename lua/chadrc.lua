@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = {
+M.base46 = {
   theme = "ayu_light",
   theme_toggle = { "ayu_light", "onedark" },
 

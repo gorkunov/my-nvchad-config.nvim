@@ -138,6 +138,11 @@ return {
         "markdown",
         "markdown_inline",
         "elixir",
+        "eex",
+        "heex",
+      },
+      highlight = {
+        enable = true,
       },
       indent = {
         enable = true,
@@ -176,5 +181,10 @@ return {
       indent = { char = "┆" },
       scope = { show_start = false, show_end = false },
     },
+  },
+
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
   },
 }

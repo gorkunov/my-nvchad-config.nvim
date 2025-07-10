@@ -13,7 +13,7 @@ local options = {
     php = { "php_cs_fixer" },
     toml = { "taplo" },
     markdown = { "typos", "mdformat" },
-    json = { "prettier" },
+    json = { "jq" },
     python = { "ruff_format" },
     ["_"] = { "trim_whitespace", "trim_newlines" },
   },

@@ -93,6 +93,18 @@ map("n", "<CR>", function()
   end
 end, { desc = "Supermaven" })
 
+-- new nvchat menu shortcuts
+map("n", "<D-m>", function()
+  require("menu").open "default"
+end, {})
+
+map("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, {})
+
 -- visual
 map("v", "<D-s>", "<ESC>:w <CR>", { desc = "Save file" })
 map("v", "<d-v>", "p", { desc = "paste" })
@@ -116,6 +128,8 @@ map("v", "<s-right>", function()
 end, { desc = "Move selection right" })
 
 map("v", "y", "mzy`z", { desc = "Copy without moving cursor", noremap = true })
+-- map("v", "p", '"0p', { desc = "Paste without copy", noremap = true })
+-- map("v", "P", '"0P', { desc = "Paste without copy", noremap = true })
 
 -- insert
 map("i", "<D-s>", "<ESC>:w <CR>", { desc = "Save file" })
